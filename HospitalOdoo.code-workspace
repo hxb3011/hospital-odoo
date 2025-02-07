@@ -1,0 +1,286 @@
+{
+    "settings": {
+        "files.exclude": {
+            "__modules/**": true,
+            ".vs/**": true,
+            "**/bin": true,
+            "**/obj": true,
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "**/Thumbs.db": true
+        }
+    },
+    "folders": [
+        {
+            "path": ".",
+            "name": "HospitalOdoo"
+        },
+        {
+            "path": "./__modules",
+            "name": "[modules]"
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "VisualStudioExptTeam.vscodeintellicode",
+            "VisualStudioExptTeam.intellicode-api-usage-examples",
+            "VisualStudioExptTeam.vscodeintellicode-completions",
+            "ms-vscode-remote.remote-containers",
+            "ms-azuretools.vscode-docker",
+            "ms-edgedevtools.vscode-edge-devtools"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Odoo Launch",
+                "request": "launch",
+                "type": "vscode-edge-devtools.debug",
+                "url": "http://localhost:44080",
+                "preLaunchTask": "[Odoo Docker] Start",
+                "postDebugTask": "[Odoo Docker] Stop"
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "args": [
+                    "volume",
+                    "create",
+                    "vscrm"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[VSCode Docker] Create Server Volume",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "run",
+                    "--rm",
+                    "--build",
+                    "co",
+                    "odoo",
+                    "--stop-after-init",
+                    "-i",
+                    "all"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Initilize",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "run",
+                    "--rm",
+                    "--build",
+                    "co",
+                    "odoo",
+                    "--stop-after-init",
+                    "-i",
+                    "all"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Initilize",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "up",
+                    "--build",
+                    "-d"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Start",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "down",
+                    "--rmi",
+                    "local"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Stop",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "down",
+                    "--rmi",
+                    "local",
+                    "-v"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Destroy",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "run",
+                    "--rm",
+                    "co",
+                    "odoo",
+                    "scaffold",
+                    "${input:module_id_input}",
+                    "/mnt/extra-addons"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Create Default Module",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "run",
+                    "--rm",
+                    "co",
+                    "odoo",
+                    "scaffold",
+                    "-t",
+                    "theme",
+                    "${input:module_id_input}",
+                    "/mnt/extra-addons"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Create Theme Module",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "run",
+                    "--rm",
+                    "co",
+                    "odoo",
+                    "scaffold",
+                    "-t",
+                    "l10n_payroll",
+                    "${input:module_id_input}",
+                    "/mnt/extra-addons"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Create L10NPayroll Module",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "compose",
+                    "-f",
+                    "${cwd}${/}assets${/}docker-compose.yml",
+                    "run",
+                    "--rm",
+                    "co",
+                    "odoo",
+                    "scaffold",
+                    "-t",
+                    "${input:template_input}",
+                    "${input:module_id_input}",
+                    "/mnt/extra-addons"
+                ],
+                "command": "docker",
+                "group": "none",
+                "label": "[Odoo Docker] Create Module with Template",
+                "type": "process"
+            },
+            {
+                "args": [
+                    "scaffold",
+                    "${input:module_id_input}",
+                    "/mnt/extra-addons"
+                ],
+                "command": "odoo",
+                "group": "none",
+                "label": "[Odoo Shell] Create Default Module",
+                "type": "shell"
+            },
+            {
+                "args": [
+                    "scaffold",
+                    "-t",
+                    "l10n_payroll",
+                    "${input:module_id_input}",
+                    "/mnt/extra-addons"
+                ],
+                "command": "odoo",
+                "group": "none",
+                "label": "[Odoo Shell] Create Theme Module",
+                "type": "shell"
+            },
+            {
+                "args": [
+                    "scaffold",
+                    "-t",
+                    "l10n_payroll",
+                    "${input:module_id_input}",
+                    "/mnt/extra-addons"
+                ],
+                "command": "odoo",
+                "group": "none",
+                "label": "[Odoo Shell] Create L10NPayroll Module",
+                "type": "shell"
+            },
+            {
+                "args": [
+                    "scaffold",
+                    "-t",
+                    "${input:template_input}",
+                    "${input:module_id_input}",
+                    "/mnt/extra-addons"
+                ],
+                "command": "odoo",
+                "group": "none",
+                "label": "[Odoo Shell] Create Module with Template",
+                "type": "shell"
+            }
+        ],
+        "inputs": [
+            {
+                "id": "module_id_input",
+                "description": "Module ID to create",
+                "type": "promptString"
+            },
+            {
+                "id": "template_input",
+                "description": "Path to a module template",
+                "type": "promptString"
+            }
+        ]
+    }
+}

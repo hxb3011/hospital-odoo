@@ -1,0 +1,9 @@
+**/.vs
+**/bin
+**/obj
+**/.git
+**/.svn
+**/.hg
+**/CVS
+**/.DS_Store
+**/Thumbs.db

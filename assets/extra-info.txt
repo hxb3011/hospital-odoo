@@ -1,0 +1,2 @@
+https://github.com/odoo/odoo/blob/18.0/odoo/tools/config.py
+https://www.odoo.com/documentation/18.0/administration/on_premise.html

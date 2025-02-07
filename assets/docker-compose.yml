@@ -1,0 +1,57 @@
+name: odoo_hospital
+networks:
+  odoo_hospital:
+    driver: bridge
+    name: odoo_hospital
+
+services:
+  db:
+    container_name: odoo_database
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+      SHELL: /bin/bash
+      POSTGRES_DB: odoo_hospital
+      POSTGRES_USER: user0
+      POSTGRES_PASSWORD: HeLlo|12
+    image: postgres:15.10
+    networks:
+      - odoo_hospital
+    ports:
+      - 44052:5432
+    volumes:
+      - dbd2:/var/lib/postgresql/data
+      - ./psql:/docker-entrypoint-initdb.d
+      - ..:/tmp/workspace
+      - vscrm:/root/.vscode-server
+
+  co:
+    build:
+      context: .
+      dockerfile: odoo.co.dockerfile
+    container_name: odoo_core
+    depends_on:
+      - db
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+      SHELL: /bin/bash
+    networks:
+      - odoo_hospital
+    ports:
+      - 44080:8069
+      - 44081:8071
+      - 44082:8072
+    volumes:
+      - cod2:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ../__modules:/mnt/extra-addons
+      - ..:/tmp/workspace
+      - vscrm:/root/.vscode-server
+
+volumes:
+  dbd2:
+    name: odoo_database_2
+  cod2:
+    name: odoo_coredata_2
+  vscrm:
+    external: true
+      
