@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+    <!-- Kết quả xét nghiệm List View -->
+    <record id="view_ketquaxn_list" model="ir.ui.view">
+      <field name="name">thxn.ketquaxn.list</field>
+      <field name="model">thxn.ketquaxn</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="contact_id" string="Bệnh nhân"/>
+          <field name="loaiXN" string="Loại xét nghiệm"/>
+          <field name="tenXN" string="Tên xét nghiệm"/>
+          <field name="thoigianthuchien" string="Thời gian thực hiện"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- Kết quả xét nghiệm Search View -->
+    <record id="view_ketquaxn_search" model="ir.ui.view">
+      <field name="name">thxn.ketquaxn.search</field>
+      <field name="model">thxn.ketquaxn</field>
+      <field name="arch" type="xml">
+        <search>
+          <!-- Tìm kiếm theo tên bệnh nhân -->
+          <field name="contact_id"/>
+          <field name="loaiXN"/>
+        </search>
+      </field>
+    </record>
+
+    <odoo>
+      <!-- Kết quả xét nghiệm Form View -->
+      <record id="view_ketquaxn_form" model="ir.ui.view">
+        <field name="name">thxn.ketquaxn.form</field>
+        <field name="model">thxn.ketquaxn</field>
+        <field name="arch" type="xml">
+          <form>
+            <sheet>
+              <group>
+                <field name="contact_id"/>
+                <field name="loaiXN"/>
+                <field name="tenXN"/>
+                <field name="thoigianthuchien"/>
+              </group>
+              <notebook>
+                <page string="Kết quả xét nghiệm">
+                  <group>
+                    <group name="huyethoc_group">
+                      <field name="hongcau"/>
+                      <field name="bachcau"/>
+                      <field name="tieucau"/>
+                      <field name="hemoglobin"/>
+                    </group>
+                    <group name="visinh_group">
+                      <field name="tenVK"/>
+                      <field name="khangsinhdo"/>
+                      <field name="tylekhangthuoc"/>
+                    </group>
+                  </group>
+                </page>
+              </notebook>
+            </sheet>
+          </form>
+        </field>
+      </record>
+    </odoo>
+
+  </data>
+</odoo>

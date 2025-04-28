@@ -1,0 +1,42 @@
+<odoo>
+  <!-- FORM VIEW HỒ SƠ -->
+  <record id="view_form_hosobenhan" model="ir.ui.view">
+    <field name="name">benhnhan.hosobenhan.form</field>
+    <field name="model">benhnhan.hosobenhan</field>
+    <field name="arch" type="xml">
+      <form string="Hồ sơ bệnh án">
+        <sheet>
+          <group>
+            <field name="benh_nhan_id"/>
+            <field name="ngay_lap"/>
+            <field name="chan_doan"/>
+            <field name="ghi_chu"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- list VIEW HỒ SƠ -->
+  <record id="view_list_hosobenhan" model="ir.ui.view">
+    <field name="name">benhnhan.hosobenhan.list</field>
+    <field name="model">benhnhan.hosobenhan</field>
+    <field name="arch" type="xml">
+      <list string="Danh sách Hồ sơ">
+        <field name="benh_nhan_id"/>
+        <field name="ngay_lap"/>
+        <field name="chan_doan"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- ACTION HỒ SƠ -->
+  <record id="action_hosobenhan" model="ir.actions.act_window">
+    <field name="name">Hồ Sơ Bệnh Án</field>
+    <field name="res_model">benhnhan.hosobenhan</field>
+    <field name="view_mode">list,form</field>
+  </record>
+
+  <!-- MENU HỒ SƠ -->
+  <menuitem id="menu_hosobenhan" name="Hồ Sơ Bệnh Án" parent="menu_benhnhan_root" action="action_hosobenhan"/>
+</odoo>

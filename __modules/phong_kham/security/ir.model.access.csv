@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_phongkham_phongkham,phongkham.phongkham,model_phongkham_phongkham,,1,1,1,1
+access_phongkham_phanbogiuong,phongkham.phanbogiuong,model_phongkham_phanbogiuong,,1,1,1,1
+access_phongkham_giuong,phongkham.giuong,model_phongkham_giuong,,1,1,1,1

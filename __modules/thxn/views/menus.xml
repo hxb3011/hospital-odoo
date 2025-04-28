@@ -1,0 +1,6 @@
+<odoo>
+    <data>
+        <menuitem name="Thực hiện xét nghiệm" id="thxn.menu_root"/>
+        <menuitem name="Danh sách xét nghiệm" id="thxn.menu_1_list" parent="thxn.menu_root" action="action_ketquaxn"/>
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="action_datlich_calendar" model="ir.actions.act_window">
+            <field name="name">Lịch khám bệnh</field>
+            <field name="res_model">datlich.datlich</field>
+            <field name="view_mode">calendar,form</field>
+        </record>
+
+        <record id="action_datlich_form" model="ir.actions.act_window">
+            <field name="name">Tạo lịch hẹn</field>
+            <field name="res_model">datlich.datlich</field>
+            <field name="view_mode">form</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <!-- Kanban View -->
+        <record id="view_dieuphoi_kanban" model="ir.ui.view">
+            <field name="name">dieuphoi.thongtindp.kanban</field>
+            <field name="model">dieuphoi.thongtindp</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="tiendo" group_expand="1">
+                    <field name="contact_id"/>
+                    <field name="dichvu"/>
+                    <!-- <field name="employee_id"/> -->
+                    <field name="tiendo"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card">
+                                <span>
+                                Bệnh nhân: 
+                                    <strong>
+                                        <t t-esc="record.contact_id.value"/>
+                                    </strong>
+                                </span>
+                                <div>
+                                    <span>Dịch vụ: <t t-esc="record.dichvu.value"/>
+                                    </span>
+                                </div>
+                                <!-- <div>
+                                    <span>Người chỉ định: <t t-esc="record.employee_id.value"/>
+                                    </span>
+                                </div> -->
+                                <div class="oe_kanban_bottom_right">
+                                Tiến độ: 
+                                    <span class="badge badge-pill badge-info">
+                                        <t t-esc="record.tiendo.value"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_dieuphoi_form" model="ir.ui.view">
+            <field name="name">dieuphoi.thongtindp.form</field>
+            <field name="model">dieuphoi.thongtindp</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="contact_id"/>
+                            <field name="dichvu"/>
+                            <!-- <field name="employee_id"/> -->
+                            <field name="tiendo"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

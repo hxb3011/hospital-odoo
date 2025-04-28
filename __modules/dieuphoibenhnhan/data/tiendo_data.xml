@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="tiendo_nhanylenh" model="dieuphoi.tiendo">
+            <field name="name">Nhận y lệnh</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="tiendo_batdaudichvu" model="dieuphoi.tiendo">
+            <field name="name">Bắt đầu dịch vụ</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="tiendo_daxong" model="dieuphoi.tiendo">
+            <field name="name">Dịch vụ hoàn thành</field>
+            <field name="sequence">3</field>
+        </record>
+    </data>
+</odoo>

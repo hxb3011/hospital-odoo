@@ -1,0 +1,31 @@
+<odoo>
+    <!-- calendar view -->
+    <record id="view_datlich_calendar" model="ir.ui.view">
+        <field name="name">datlich.datlich.calendar</field>
+        <field name="model">datlich.datlich</field>
+        <field name="arch" type="xml">
+            <calendar string="Lịch hẹn khám" date_start="thoigian" create="true" color="contact_id">
+                <field name="contact_id"/>
+                <field name="trangthai"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id="view_datlich_form" model="ir.ui.view">
+        <field name="name">datlich.datlich.form</field>
+        <field name="model">datlich.datlich</field>
+        <field name="arch" type="xml">
+            <form string="Lịch hẹn khám">
+                <group>
+                    <field name="contact_id"/>
+                    <field name="thoigian"/>
+                    <field name="trangthai"/>
+                </group>
+                <group>
+                    <field name="mota"/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

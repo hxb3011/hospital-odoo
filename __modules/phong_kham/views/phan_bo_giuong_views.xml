@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+
+    <record id="view_phanbogiuong_form" model="ir.ui.view">
+      <field name="name">phanbogiuong.form</field>
+      <field name="model">phongkham.phanbogiuong</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="benh_nhan_id"/>
+            <field name="giuong_id"/>
+            <field name="ngay_nhap_vien"/>
+            <field name="ngay_xuat_vien"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_phanbogiuong_list" model="ir.ui.view">
+      <field name="name">phanbogiuong.list</field>
+      <field name="model">phongkham.phanbogiuong</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="benh_nhan_id"/>
+          <field name="giuong_id"/>
+          <field name="ngay_nhap_vien"/>
+          <field name="ngay_xuat_vien"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_phanbogiuong" model="ir.actions.act_window">
+      <field name="name">Phân Bổ Giường</field>
+      <field name="res_model">phongkham.phanbogiuong</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem name="Phân bổ giường bệnh" id="phongkham_menu_3"
+              parent="phong_kham.phongkham_menu_root" action="action_phanbogiuong"/>
+
+  </data>
+</odoo>

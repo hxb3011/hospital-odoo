@@ -1,0 +1,93 @@
+<odoo>
+  <data>
+
+    <!-- ============ VIEW PHÒNG ============ -->
+
+    <record model="ir.ui.view" id="phongkham_view_form">
+      <field name="name">phongkham.form</field>
+      <field name="model">phongkham.phongkham</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="loai_phong"/>
+            </group>
+            <notebook>
+              <page string="Giường trong phòng">
+                <field name="giuong_ids">
+                  <list editable="bottom">
+                    <field name="name"/>
+                    <field name="trang_thai"/>
+                  </list>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="phongkham_view_list">
+      <field name="name">phongkham.list</field>
+      <field name="model">phongkham.phongkham</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="loai_phong"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="phongkham_action_window">
+      <field name="name">Phòng Khám</field>
+      <field name="res_model">phongkham.phongkham</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- ============ VIEW GIƯỜNG ============ -->
+
+    <record model="ir.ui.view" id="giuong_view_form">
+      <field name="name">giuong.form</field>
+      <field name="model">phongkham.giuong</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="phong_id"/>
+            <field name="trang_thai"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="giuong_view_list">
+      <field name="name">giuong.list</field>
+      <field name="model">phongkham.giuong</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="phong_id"/>
+          <field name="trang_thai"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="giuong_action_window">
+      <field name="name">Giường Bệnh Viện</field>
+      <field name="res_model">phongkham.giuong</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- ============ MENU ============ -->
+
+    <menuitem name="Phòng Khám" id="phongkham_menu_root"/>
+
+    <menuitem name="Danh sách phòng" id="phongkham_menu_1"
+              parent="phongkham_menu_root" action="phongkham_action_window"/>
+
+    <menuitem name="Danh sách giường" id="phongkham_menu_2"
+              parent="phongkham_menu_root" action="giuong_action_window"/>
+
+  </data>
+</odoo>

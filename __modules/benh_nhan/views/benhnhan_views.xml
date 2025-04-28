@@ -1,0 +1,52 @@
+<odoo>
+  <!-- FORM VIEW BỆNH NHÂN -->
+  <record id="view_form_benhnhan" model="ir.ui.view">
+    <field name="name">benhnhan.benhnhan.form</field>
+    <field name="model">benhnhan.benhnhan</field>
+    <field name="arch" type="xml">
+      <form string="Thông tin Bệnh Nhân">
+        <sheet>
+          <group>
+            <field name="partner_id"/>
+            <field name="cmnd_cccd"/>
+          </group>
+
+          <notebook>
+            <page string="Hồ sơ bệnh án">
+              <field name="ho_so_ids">
+                <list editable="bottom">
+                  <field name="ngay_lap"/>
+                  <field name="chan_doan"/>
+                  <field name="ghi_chu"/>
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- list VIEW BỆNH NHÂN -->
+  <record id="view_list_benhnhan" model="ir.ui.view">
+    <field name="name">benhnhan.benhnhan.list</field>
+    <field name="model">benhnhan.benhnhan</field>
+    <field name="arch" type="xml">
+      <list string="Danh sách Bệnh Nhân">
+        <field name="partner_id"/>
+        <field name="cmnd_cccd"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- ACTION BỆNH NHÂN -->
+  <record id="action_benhnhan" model="ir.actions.act_window">
+    <field name="name">Bệnh Nhân</field>
+    <field name="res_model">benhnhan.benhnhan</field>
+    <field name="view_mode">list,form</field>
+  </record>
+
+  <!-- MENU BỆNH NHÂN -->
+  <menuitem id="menu_benhnhan_root" name="Bệnh Nhân" sequence="10"/>
+  <menuitem id="menu_benhnhan" name="Quản lý bệnh nhân" parent="menu_benhnhan_root" action="action_benhnhan"/>
+</odoo>
